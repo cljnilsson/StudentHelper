@@ -9,3 +9,12 @@ Hardcoded nonsense for now, unfortunately it has to be public for pages to work.
 bun run build
 bun run deploy
 -> Wait for github actions to publish
+
+
+##### Potential Todos
+* Show all questions button
+* Remove question from pool once next is clicked
+* previous button
+* chapter subtitle
+* support for more than one subject
+* load questions from json or seperate ts tile

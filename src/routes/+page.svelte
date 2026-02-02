@@ -317,6 +317,11 @@
 		{:else}
 			<p>Questions: {pool().length}</p>
 			{#key currentQuestion}
+				<h4>
+					{#if currentQuestion}
+						{kapitel.find((k) => currentQuestion && k.questions.includes(currentQuestion))?.name}
+					{/if}
+				</h4>
 				<h5 in:growFade={{ duration: 200, start: 0.85, easing: cubicOut }}>
 					{currentQuestion}
 				</h5>
