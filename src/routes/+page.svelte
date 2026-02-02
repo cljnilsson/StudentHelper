@@ -4,13 +4,15 @@
 
 	let history: string[] = $state([]);
 	let currentQuestion: string | undefined = $state(undefined);
-	let kapitel: { name: string; enabled: boolean; questions: string[] }[] = $state([]);
+	let kapitel: { name: string; subtitle: string, enabled: boolean; questions: string[] }[] = $state([]);
+	let showAll: boolean = $state(false);
 	let index: number = $state(1);
 
 	onMount(() => {
 		kapitel = [
 			{
 				name: 'Kapitel 1',
+				subtitle: "Elektriker, en härlig kombination av teoretisk och praktisk kunskap",
 				enabled: true,
 				questions: [
 					'1. Namnge tre olika verktyg som används för elarbeten och vad de används till:',
@@ -21,6 +23,7 @@
 			},
 			{
 				name: 'Kapitel 2',
+				subtitle: "El och teleteknikern - en mångsysslare",
 				enabled: false,
 				questions: [
 					'5. Vilka olika arbetsområden finns det för en elektriker?',
@@ -41,6 +44,7 @@
 			},
 			{
 				name: 'Kapitel 3',
+				subtitle: "Grundläggande regler och begrepp",
 				enabled: true,
 				questions: [
 					'19. Vem stiftar lagar i Sverige?',
@@ -53,6 +57,7 @@
 			},
 			{
 				name: 'Kapitel 4',
+				subtitle: "Arbete ur elsäkerhetssynpunkt",
 				enabled: true,
 				questions: [
 					'25. Vad beror det på hur allvarliga skadorna blir vid en elolycka?',
@@ -63,6 +68,7 @@
 			},
 			{
 				name: 'Kapitel 5',
+				subtitle: "Elsäkra anslutningar",
 				enabled: true,
 				questions: [
 					'29. Vad är ledare?',
@@ -79,6 +85,7 @@
 			},
 			{
 				name: 'Kapitel 6',
+				subtitle: "Eldistribution",
 				enabled: true,
 				questions: [
 					'39. Varför vill man ha en hög spänning från kraftstationen?',
@@ -102,6 +109,7 @@
 			},
 			{
 				name: 'Kapitel 7',
+				subtitle: "Säkringar och grupper",
 				enabled: true,
 				questions: [
 					'55. Hur väljer man rätt säkring?',
@@ -118,6 +126,7 @@
 			},
 			{
 				name: 'Kapitel 8',
+				subtitle: "Jordfelsbrytare och andra säkerhetsanordningar",
 				enabled: true,
 				questions: [
 					'65. Hur fungerar en jordfelsbrytare?',
@@ -131,6 +140,7 @@
 			},
 			{
 				name: 'Kapitel 9',
+				subtitle: "Elmaterial och installationsmljöer",
 				enabled: true,
 				questions: [
 					'72. Vad innebär begreppet IP-klass?',
@@ -150,6 +160,7 @@
 			},
 			{
 				name: 'Kapitel 10',
+				subtitle: "Materiallära och fästteknik för elyrken",
 				enabled: true,
 				questions: [
 					'85. Vad är det för skillnad i att arbeta med betong och lättbetong?',
@@ -160,6 +171,7 @@
 			},
 			{
 				name: 'Kapitel 11',
+				subtitle: "Belysning och vägguttagsinsllationer",
 				enabled: false,
 				questions: [
 					'89. Vilken strömställare använder man för att styra två lampor var för sig från samma plats?',
@@ -179,6 +191,7 @@
 			},
 			{
 				name: 'Kapitel 12',
+				subtitle: "Arbete från stege och ställningsbyggande",
 				enabled: false,
 				questions: [
 					'102. När ska man undvika stege och istället välja andra alternativ?',
@@ -191,6 +204,7 @@
 			},
 			{
 				name: 'Kapitel 13',
+				subtitle: "Ritningar, kretsar och dess scheman",
 				enabled: false,
 				questions: [
 					'108. När använder man en installationsritning?',
@@ -206,6 +220,7 @@
 			},
 			{
 				name: 'Kapitel 14',
+				subtitle: "Mekanisk ritningslära och mätteknik",
 				enabled: false,
 				questions: [
 					'117. Varför är det en säkrare metod att ange mått från en baslinje?',
@@ -222,6 +237,7 @@
 			},
 			{
 				name: 'Kapitel 15',
+				subtitle: "Verkstads och hantverksarbete",
 				enabled: false,
 				questions: [
 					'127. När använder man en körnare?',
@@ -232,6 +248,7 @@
 			},
 			{
 				name: 'Kapitel 16',
+				subtitle: "El och verkstsadsarbete ut arbetsmiljösynpunkt",
 				enabled: false,
 				questions: [
 					'131. Vad är skillnaden på psykosocial och fysisk arbetsmiljö?',
@@ -331,6 +348,14 @@
 					>Previous</button
 				><button class="btn btn-primary mx-3" onclick={next}>Next</button>
 			</div>
+			<button class="btn btn-primary" onclick={() => showAll = !showAll}>{showAll ? "Hide" : "Show"} All Questions</button>
+			{#if showAll}
+				<div class="pt-5">
+					{#each pool() as p (p)}
+						<p>{p}</p>
+					{/each}
+				</div>
+			{/if}
 		{/if}
 	</div>
 </div>
