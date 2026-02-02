@@ -12,9 +12,6 @@ bun run deploy
 
 
 ##### Potential Todos
-* Show all questions button
 * Remove question from pool once next is clicked
 * previous button
-* chapter subtitle
 * support for more than one subject
-* load questions from json or seperate ts tile
