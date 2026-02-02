@@ -336,7 +336,8 @@
 			{#key currentQuestion}
 				<h4>
 					{#if currentQuestion}
-						{kapitel.find((k) => currentQuestion && k.questions.includes(currentQuestion))?.name}
+						{@const chapter = kapitel.find((k) => k.questions.includes(currentQuestion ?? ""))}
+						{chapter?.name} - {chapter?.subtitle}
 					{/if}
 				</h4>
 				<h5 in:growFade={{ duration: 200, start: 0.85, easing: cubicOut }}>
