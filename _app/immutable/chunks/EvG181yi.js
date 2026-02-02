@@ -1,0 +1,1 @@
+var e;const t=((e=globalThis.__sveltekit_3qeed0)==null?void 0:e.base)??"/StudentHelper";var s;const l=((s=globalThis.__sveltekit_3qeed0)==null?void 0:s.assets)??t??"https://cljnilsson.github.io/StudentHelper";export{l as a,t as b};
