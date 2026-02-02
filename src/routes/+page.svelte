@@ -58,7 +58,7 @@
 </script>
 
 <div class="row">
-	<div class="col-xl-auto col-md-6 col-12 border-md-end">
+	<div class="col-xl-auto col-md-3 col-12 bd-end">
 		{#each currentSubject.chapters as k (k.name)}
 			<input type="checkbox" class="form-check-input" bind:checked={k.enabled} /> {k.name} <br />
 		{/each}
@@ -81,14 +81,16 @@
 					<div class="my-5 p-3 border rounded">
 						{#key currentQuestion}
 							<h4>
-								{#if currentQuestion}
-									{@const chapter = currentSubject.chapters.find((k) =>
-										k.questions.includes(currentQuestion ?? '')
-									)}
-									{chapter?.name} - {chapter?.subtitle}
-								{/if}
+								<span class="border-bottom">
+									{#if currentQuestion}
+										{@const chapter = currentSubject.chapters.find((k) =>
+											k.questions.includes(currentQuestion ?? '')
+										)}
+										{chapter?.name} - {chapter?.subtitle}
+									{/if}
+								</span>
 							</h4>
-							<h5 in:growFade={{ duration: 200, start: 0.85, easing: cubicOut }}>
+							<h5 class="py-3 mb-0" in:growFade={{ duration: 200, start: 0.85, easing: cubicOut }}>
 								{currentQuestion}
 							</h5>
 						{/key}
@@ -117,3 +119,11 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	@media only screen and (min-width : 992px) {
+		.bd-end {
+			border-right: 1px solid #dee2e6;
+		}
+	}
+</style>
