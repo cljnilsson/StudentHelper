@@ -19,7 +19,7 @@
 	<script src={resolved3} defer></script>
 </svelte:head>
 
-<div class="container rounded">
+<div class="container rounded shadow">
 	<div class="my-5 p-3">
 		{@render children()}
 	</div>
